@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+		The New York Times	
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+	<ion-list>
+		<ion-item>
+			<ion-label>Category</ion-label>
+			<ion-select [(ngModel)]="data.catgy" (ionChange)="getNewView()">
+				<ion-option *ngFor="let category of categories" value="{{category}}">{{category}}</ion-option>
+			</ion-select>
+		</ion-item>
+		<ion-item *ngFor="let feed of news">
+			<ion-thumbnail item-left>
+				<img src="{{feed.multimedia[0] ? feed.multimedia[1].url :'https://static01.nyt.com/images/icons/t_logo_291_black.png' }}">
+			</ion-thumbnail>
+			<h2>{{feed.title}}</h2>
+			<p>{{feed.subsection}}</p>
+			<button ion-button clear item-right (click)="view(feed)">View</button>
+		</ion-item>
+</ion-list>
+</ion-content>
